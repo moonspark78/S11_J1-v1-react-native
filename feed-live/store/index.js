@@ -1,10 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, createStore } from 'redux';
 import likedImageReducer from './likedImageReducer';
 import savedPostsReducer from './savedPostsReducer';
+import feedReducer from './feedReducer';
 
-export const store = configureStore({
-  reducer: {
-    likedImages: likedImageReducer,
-    savedPosts: savedPostsReducer,
-  },
+const rootReducer = combineReducers({
+  likedImages: likedImageReducer,
+  savedPosts: savedPostsReducer,
+  feed: feedReducer,
 });
+
+export const store = createStore(rootReducer);
